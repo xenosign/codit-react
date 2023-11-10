@@ -6,21 +6,35 @@ function random() {
   return Math.ceil(Math.random() * 6);
 }
 
-// history 마지막 수만 알면 다 구할 수 있으니, 변경하자
 function App() {
+  const [blueNum, setBlueNum] = useState(1);
+  const [blueSum, setBlueSum] = useState(0);
   const [blueGameHistory, setBlueGameHistory] = useState([]);
+
+  const [redSum, setRedSum] = useState(0);
+  const [redNum, setRedNum] = useState(1);
   const [redGameHistory, setRedGameHistory] = useState([]);
 
   const handleThrowDice = () => {
     const nextBlueNum = random();
     const nextRedNum = random();
 
+    setBlueNum(nextBlueNum);
+    setBlueSum(blueSum + nextBlueNum);
     setBlueGameHistory([...blueGameHistory, nextBlueNum]);
+
+    setRedNum(nextRedNum);
+    setRedSum(redSum + nextRedNum);
     setRedGameHistory([...redGameHistory, nextRedNum]);
   }
 
   const handleClearClick = () => {
+    setBlueNum(1);
+    setBlueSum(0);
     setBlueGameHistory([]);
+
+    setRedNum(1);
+    setRedSum(0);
     setRedGameHistory([]);
   };
 
@@ -31,8 +45,8 @@ function App() {
         <Button onClick={handleClearClick}>초기화</Button>
       </div>
       <div>
-        <Board name="나" color="blue" gameHistory={blueGameHistory} />
-        <Board name="상대" color="red" gameHistory={redGameHistory} />
+        <Board name="나" color="blue" num={blueNum} sum={blueSum} gameHistory={blueGameHistory} />
+        <Board name="상대" color="red" num={redNum} sum={redSum} gameHistory={redGameHistory} />
       </div>
     </>
   );
