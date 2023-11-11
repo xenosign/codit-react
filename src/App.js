@@ -2,8 +2,8 @@ import { useState } from "react";
 import Board from "./Board";
 import Button from "./Button";
 
-function random() {
-  return Math.ceil(Math.random() * 6);
+function random(max) {
+  return Math.ceil(Math.random() * max);
 }
 
 // history 마지막 수만 알면 다 구할 수 있으니, 변경하자
@@ -12,12 +12,13 @@ function App() {
   const [redGameHistory, setRedGameHistory] = useState([]);
 
   const handleThrowDice = () => {
-    const nextBlueNum = random();
-    const nextRedNum = random();
+    const max = 6;
+    const nextBlueNum = random(max);
+    const nextRedNum = random(max);
 
     setBlueGameHistory([...blueGameHistory, nextBlueNum]);
     setRedGameHistory([...redGameHistory, nextRedNum]);
-  }
+  };
 
   const handleClearClick = () => {
     setBlueGameHistory([]);
