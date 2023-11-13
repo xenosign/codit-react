@@ -16,6 +16,8 @@ function App() {
     const nextBlueNum = random(max);
     const nextRedNum = random(max);
 
+    console.log(nextBlueNum, nextRedNum)
+
     setBlueGameHistory([...blueGameHistory, nextBlueNum]);
     setRedGameHistory([...redGameHistory, nextRedNum]);
   };
@@ -28,9 +30,9 @@ function App() {
   return (
     <>
       <div>
-        <Button onClick={handleThrowDice}>던지기</Button>
-        <Button onClick={handleClearClick}>초기화</Button>
-      </div>
+        <Button color='blue' onClick={handleThrowDice}>던지기</Button>
+        <Button color='red' onClick={handleClearClick}>초기화</Button>
+      </div >
       <div>
         <Board name="나" color="blue" gameHistory={blueGameHistory} />
         <Board name="상대" color="red" gameHistory={redGameHistory} />
