@@ -2,6 +2,7 @@ import { useState } from "react";
 import Board from "./Board";
 import Button from "./Button";
 import './index.css';
+import './App.css';
 
 function random(max) {
   return Math.ceil(Math.random() * max);
@@ -31,8 +32,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Button color='blue' onClick={handleThrowDice}>던지기</Button>
-        <Button color='red' onClick={handleClearClick}>초기화</Button>
+        <Button color='blue' className="App-button" onClick={handleThrowDice}>던지기</Button>
+        <Button color='red' className="App-button" onClick={handleClearClick}>초기화</Button>
       </div >
       <div>
         <Board name="나" color="blue" gameHistory={blueGameHistory} />
