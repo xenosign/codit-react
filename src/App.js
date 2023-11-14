@@ -3,6 +3,7 @@ import Board from "./Board";
 import Button from "./Button";
 import './index.css';
 import './App.css';
+import logo from './assets/logo.png';
 
 function random(max) {
   return Math.ceil(Math.random() * max);
@@ -31,11 +32,13 @@ function App() {
 
   return (
     <div className="App">
+      <img src={logo} alt="로고" className="Logo" />
+      <h1>주사위 게임</h1>
       <div>
         <Button color='blue' className="App-button" onClick={handleThrowDice}>던지기</Button>
         <Button color='red' className="App-button" onClick={handleClearClick}>초기화</Button>
       </div >
-      <div>
+      <div className="Board-container">
         <Board name="나" color="blue" gameHistory={blueGameHistory} />
         <Board name="상대" color="red" gameHistory={redGameHistory} />
       </div>

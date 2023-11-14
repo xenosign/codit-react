@@ -1,3 +1,14 @@
 .App .App-button {
   margin: 6px;
 }
+
+.App .Logo {
+  width: 20vw;
+}
+
+.App .Board-container {  
+  display: flex;
+  gap: 30px;
+  margin-top: 50px;
+  justify-content: center;
+}
